@@ -6,98 +6,83 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import EmailIcon from "@mui/icons-material/Email";
+import ThesisIcon from "@mui/icons-material/School";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import Avatar from "@mui/material/Avatar";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import WebsiteIcon from "@mui/icons-material/Language";
 import Slider from "@mui/material/Slider";
 import { SxProps, Theme } from "@mui/material/styles";
 
-const HEADER_HEIGHT = 200;
-
 export default function Page() {
   return (
-    <Container
-      maxWidth={"lg"}
-      sx={{
-        paddingY: 4,
-
-        "@media print": {
-          paddingY: 0,
-        },
-      }}
-    >
-      <Box
+    <React.Fragment>
+      <Container
+        maxWidth={"lg"}
         sx={{
-          py: 4,
-          paddingX: 4,
-          bgcolor: "background.paper",
-          border: "1px solid",
-          borderColor: "divider",
-          borderRadius: 2,
+          paddingY: 4,
 
           "@media print": {
-            border: "none",
-            paddingX: 1,
+            paddingY: 0,
           },
         }}
       >
-        <Grid container spacing={8}>
-          <Grid size={7}>
-            <Header />
+        <Box
+          sx={{
+            py: 4,
+            paddingX: 4,
+            bgcolor: "background.paper",
+            border: "1px solid",
+            borderColor: "divider",
+            borderRadius: 2,
 
-            <JobExperienceSection />
-            <Box sx={{ mb: 3 }} />
+            "@media print": {
+              border: "none",
+              paddingX: 1,
+            },
+          }}
+        >
+          <Header />
+          <Box sx={{ mb: 6 }} />
 
-            <PersonalInterests />
+          <Grid container spacing={5}>
+            <Grid size={7}>
+              <JobExperienceSection />
+              <Spacing />
+
+              <Education />
+              <Spacing />
+            </Grid>
+
+            <Grid size={5}>
+              <Languages />
+              <Spacing />
+
+              <Skills />
+              <Spacing />
+
+              <BonusSkills />
+              <Spacing />
+
+              <Projects />
+              <Spacing />
+
+              <PersonalInterests />
+            </Grid>
           </Grid>
-
-          <Grid size={5}>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "flex-start",
-                justifyContent: "center",
-                height: HEADER_HEIGHT,
-              }}
-            >
-              <Avatar
-                src="images/Profile.jpg"
-                alt="Leonardo Lombardi"
-                sx={{
-                  width: 150,
-                  height: 150,
-                }}
-              >
-                Leonardo Lombardi
-              </Avatar>
-            </Box>
-
-            <Education />
-            <Box sx={{ mb: 3 }} />
-
-            <Languages />
-            <Box sx={{ mb: 3 }} />
-
-            <GeneralSkills />
-            <Box sx={{ mb: 3 }} />
-
-            <SpecificSkills />
-            <Box sx={{ mb: 3 }} />
-          </Grid>
-        </Grid>
-      </Box>
-    </Container>
+        </Box>
+      </Container>
+    </React.Fragment>
   );
+}
+
+function Spacing() {
+  return <Box sx={{ mb: 3 }} />;
 }
 
 function Header() {
   return (
-    <Box
-      sx={{
-        height: HEADER_HEIGHT,
-      }}
-    >
+    <Box>
       <Typography
         variant="h4"
         component="h1"
@@ -126,40 +111,42 @@ function Header() {
         useFlexGap
         sx={{ mt: 0.5, flexWrap: "wrap" }}
       >
-        <HeaderLink Icon={EmailIcon} href="mailto:leonardolombardi07@gmail.com">
+        <IconLink Icon={EmailIcon} href="mailto:leonardolombardi07@gmail.com">
           leonardolombardi07@gmail.com
-        </HeaderLink>
+        </IconLink>
 
-        <HeaderLink Icon={WhatsAppIcon} href="https://wa.me/5521989986625">
+        <IconLink Icon={WhatsAppIcon} href="https://wa.me/5521989986625">
           +5521989986625
-        </HeaderLink>
+        </IconLink>
 
-        <HeaderLink
+        <IconLink
           Icon={GitHubIcon}
           href="https://github.com/leonardolombardi07"
         >
           leonardolombardi07
-        </HeaderLink>
+        </IconLink>
 
-        <HeaderLink
+        <IconLink
           Icon={LinkedInIcon}
           href="https://www.linkedin.com/in/leonardo-lombardi-b360951a1/?locale=en_US"
         >
           Leonardo Lombardi
-        </HeaderLink>
+        </IconLink>
       </Stack>
     </Box>
   );
 }
 
-function HeaderLink({
+function IconLink({
   children,
   Icon,
   href,
+  sx,
 }: {
   children: React.ReactNode;
   Icon: typeof EmailIcon;
   href: string;
+  sx?: SxProps<Theme>;
 }) {
   return (
     <Typography
@@ -171,6 +158,7 @@ function HeaderLink({
         color: "text.secondary",
         display: "flex",
         alignItems: "center",
+        ...sx,
       }}
     >
       <Icon
@@ -182,62 +170,6 @@ function HeaderLink({
 
       {children}
     </Typography>
-  );
-}
-
-function GeneralSkills() {
-  return (
-    <Box>
-      <SectionTitle>General Skills</SectionTitle>
-
-      <Grid container columnSpacing={2} rowSpacing={0}>
-        <Grid size={6}>
-          <PercentageSlider label="Typescript/Javascript" value={80} />
-        </Grid>
-
-        <Grid size={6}>
-          <PercentageSlider label="Python (Type Hints ❤️)" value={70} />
-        </Grid>
-
-        <Grid size={6}>
-          <PercentageSlider label="OrcaFlex/OrcFxAPI" value={60} />
-        </Grid>
-
-        <Grid size={6}>
-          <PercentageSlider label="HTML/CSS" value={65} />
-        </Grid>
-      </Grid>
-    </Box>
-  );
-}
-
-function SpecificSkills() {
-  return (
-    <Box>
-      <SectionTitle>Job Specific Skills</SectionTitle>
-
-      <Grid container columnSpacing={2} rowSpacing={0}>
-        <Grid size={6}>
-          <PercentageSlider label="React/NextJS/Material UI" value={80} />
-        </Grid>
-
-        <Grid size={6}>
-          <PercentageSlider label="Plotly/Dash" value={50} />
-        </Grid>
-
-        <Grid size={6}>
-          <PercentageSlider label="OrcFxAPI" value={90} />
-        </Grid>
-
-        <Grid size={6}>
-          <PercentageSlider label="Version Control" value={60} />
-        </Grid>
-
-        <Grid size={6}>
-          <PercentageSlider label="Redux/Redux Toolkit" value={60} />
-        </Grid>
-      </Grid>
-    </Box>
   );
 }
 
@@ -267,6 +199,115 @@ function Languages() {
   );
 }
 
+function Skills() {
+  return (
+    <Box>
+      <SectionTitle>Skills</SectionTitle>
+
+      <Grid container columnSpacing={2} rowSpacing={0}>
+        <Grid size={6}>
+          <PercentageSlider label="Typescript/Javascript" value={80} />
+        </Grid>
+
+        <Grid size={6}>
+          <PercentageSlider label="Python (Type Hints ❤️)" value={70} />
+        </Grid>
+
+        <Grid size={6}>
+          <PercentageSlider label="OrcaFlex/OrcFxAPI" value={60} />
+        </Grid>
+
+        <Grid size={6}>
+          <PercentageSlider label="HTML/CSS" value={65} />
+        </Grid>
+      </Grid>
+    </Box>
+  );
+}
+
+function BonusSkills() {
+  return (
+    <Box>
+      <SectionTitle>Bonus Skills</SectionTitle>
+
+      <Grid container columnSpacing={2} rowSpacing={0}>
+        <Grid size={6}>
+          <PercentageSlider label="React/NextJS" value={80} />
+        </Grid>
+
+        <Grid size={6}>
+          <PercentageSlider label="Plotly/Dash" value={50} />
+        </Grid>
+
+        <Grid size={6}>
+          <PercentageSlider label="OrcFxAPI" value={90} />
+        </Grid>
+
+        <Grid size={6}>
+          <PercentageSlider label="Version Control (Git/GitHub)" value={60} />
+        </Grid>
+
+        <Grid size={6}>
+          <PercentageSlider label="Redux/Redux Toolkit" value={60} />
+        </Grid>
+
+        <Grid size={6}>
+          <PercentageSlider label="Material UI" value={85} />
+        </Grid>
+
+        <Grid size={6}>
+          <PercentageSlider label="React Native/Expo" value={70} />
+        </Grid>
+
+        <Grid size={6}>
+          <PercentageSlider label="Firebase" value={75} />
+        </Grid>
+      </Grid>
+    </Box>
+  );
+}
+
+function Projects() {
+  return (
+    <Box>
+      <SectionTitle>Relevant Projects for the Job</SectionTitle>
+
+      <Stack
+        direction="row"
+        divider={<Divider orientation="vertical" flexItem />}
+        spacing={1}
+      >
+        <IconLink
+          href="https://leonardolombardi.vercel.app/"
+          Icon={WebsiteIcon}
+        >
+          leonardolombardi.vercel.app
+        </IconLink>
+
+        <IconLink
+          href="https://github.com/leonardolombardi07/leonardo-lombardi"
+          Icon={GitHubIcon}
+        >
+          Code (NextJS + Material UI)
+        </IconLink>
+      </Stack>
+
+      <Box sx={{ mb: 1 }} />
+
+      <IconLink
+        href="http://www.repositorio.poli.ufrj.br/monografias/projpoli10046694.pdf"
+        Icon={ThesisIcon}
+        sx={{
+          lineHeight: 1.15,
+        }}
+      >
+        Bachelor&apos;s thesis <br />
+        (Genetic Algorithm for Direct Vertical Connection Analysis)
+      </IconLink>
+    </Box>
+  );
+}
+
 function PercentageSlider({ label, value }: { label: string; value: number }) {
   return (
     <Box>
@@ -280,7 +321,7 @@ function PercentageSlider({ label, value }: { label: string; value: number }) {
         }}
       >
         <Typography
-          variant="subtitle2"
+          variant="subtitle1"
           sx={{
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",
@@ -297,7 +338,6 @@ function PercentageSlider({ label, value }: { label: string; value: number }) {
         value={value}
         valueLabelDisplay="auto"
         sx={{
-          //   py: 0.5,
           pt: 1,
           pb: 0.5,
 
@@ -338,7 +378,7 @@ function JobExperienceSection() {
       >
         <BulletPointListContainer>
           <BulletPointListItem>
-            Performed subsea installation analyses using Orca Flex to optimize
+            Performed subsea installation analyses using OrcaFlex to optimize
             flexible pipe installation and riser design, ensuring safe and
             efficient deepwater operations.
           </BulletPointListItem>
@@ -366,9 +406,8 @@ function JobExperienceSection() {
 
           <BulletPointListItem>
             Introduced modern technologies (Next.js, TypeScript, Material UI,
-            Firebase, Auth0, AI APIs) to replace legacy systems, enhancing
-            usability, data security, and client access to certification
-            metrics.
+            Firebase, Auth0, AI APIs), enhancing usability, data security, and
+            client access to certification metrics.
           </BulletPointListItem>
         </BulletPointListContainer>
       </JobExperience>
@@ -440,7 +479,7 @@ function BulletPointListItem({ children }: { children: React.ReactNode }) {
     <Typography
       component={"li"}
       variant="body2"
-      sx={{ color: "text.secondary", fontSize: 15 }}
+      sx={{ color: "text.secondary" }}
     >
       {children}
     </Typography>
@@ -534,19 +573,33 @@ function Education() {
         place="Universidade Federal do Rio de Janeiro"
         location=""
         to="March 2025"
-        divider={false}
-      />
-
+      >
+        <BulletPointListContainer>
+          <BulletPointListItem>
+            Excelled in Computing, Numerical Calculus, and Scientific Calculus,
+            developing strong foundations in programming, algorithms, and
+            applied mathematics.
+          </BulletPointListItem>
+        </BulletPointListContainer>
+      </EducationExperience>
       <Box sx={{ mt: 1 }} />
 
       <EducationExperience
-        degree="Exchange, Naval Engineering"
+        degree="Exchange Program, Naval Engineering"
         place="Instituto Superior Técnico"
         location="Lisbon"
         from="August 2021"
         to="August 2022"
         divider={false}
-      />
+      >
+        <BulletPointListContainer>
+          <BulletPointListItem>
+            First contact with optimization algorithms in naval engineering
+            through the Ship Design course, developing a model to minimize the
+            annual cost of a cruiser ship.
+          </BulletPointListItem>
+        </BulletPointListContainer>
+      </EducationExperience>
     </Box>
   );
 }
@@ -623,7 +676,7 @@ function EducationExperience({
 
       {children}
 
-      {divider === false ? null : <Divider sx={{ mb: 3 }} />}
+      {divider === false ? null : <Divider sx={{ mt: 1, mb: 2 }} />}
     </Box>
   );
 }
@@ -632,10 +685,20 @@ function PersonalInterests() {
   return (
     <Box>
       <SectionTitle>Personal Interests</SectionTitle>
-      Movies & Good books & <br />
-      Sailing, Soccer, Padel, Table Tennis (hard to beat me at these); <br />
-      Tennis, Running (easy to beat me at these); <br />
-      Surfing, Wing Foil, Skiing (want to learn!).
+
+      <Typography
+        variant="body2"
+        sx={{
+          color: "text.secondary",
+          // Spacing between lines:
+          lineHeight: 1.1,
+        }}
+      >
+        Good Movies & Good books & Good Food & <br />
+        Sailing, Soccer, Padel, Table Tennis (hard to beat me at these); <br />
+        Tennis, Running (easy to beat me at these); <br />
+        Surfing, Wing Foil, Skiing (want to learn!).
+      </Typography>
     </Box>
   );
 }

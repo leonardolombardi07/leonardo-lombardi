@@ -8,6 +8,14 @@ export const { light: MAIN_THEME, dark: DARK_MAIN_THEME } =
     light: {
       typography: {
         fontFamily: ROBOTO_FONT.style.fontFamily,
+        fontSize: 12, // Base font size (rem-based; defaults to 14, so this shrinks everything ~14%).
+        h4: { fontSize: "1.6rem" }, // Smaller header.
+        h5: { fontSize: "1.2rem" },
+        h6: { fontSize: "1rem" },
+        body1: { fontSize: "0.9rem" },
+        body2: { fontSize: "0.85rem" },
+        subtitle1: { fontSize: "0.75rem" },
+        subtitle2: { fontSize: "0.7rem" },
       },
       palette: {
         mode: "light",
