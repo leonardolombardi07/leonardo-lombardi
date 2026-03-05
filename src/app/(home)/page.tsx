@@ -11,8 +11,10 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import WebsiteIcon from "@mui/icons-material/Language";
-import Slider from "@mui/material/Slider";
+import SoccerIcon from "@mui/icons-material/SportsSoccer";
 import { SxProps, Theme } from "@mui/material/styles";
+import Slider from "./_page/Slider";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -45,8 +47,13 @@ export default function Page() {
           <Header />
           <Box sx={{ mb: 6 }} />
 
-          <Grid container spacing={5}>
-            <Grid size={7}>
+          <Grid container columnSpacing={5} rowSpacing={0}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 7,
+              }}
+            >
               <JobExperienceSection />
               <Spacing />
 
@@ -54,7 +61,24 @@ export default function Page() {
               <Spacing />
             </Grid>
 
-            <Grid size={5}>
+            <Grid
+              size={{
+                xs: 12,
+                md: 5,
+              }}
+            >
+              <Divider
+                orientation="horizontal"
+                flexItem
+                sx={{
+                  display: {
+                    xs: "flex",
+                    md: "none",
+                  },
+                  mb: 3,
+                }}
+              />
+
               <Languages />
               <Spacing />
 
@@ -180,19 +204,41 @@ function Languages() {
 
       <Grid container columnSpacing={2} rowSpacing={0}>
         <Grid size={6}>
-          <PercentageSlider label="Portuguese" value={100} />
+          <Slider
+            label="Portuguese"
+            value={100}
+            shortDescription="This is my native language. I'm from Brazil!"
+          />
         </Grid>
 
         <Grid size={6}>
-          <PercentageSlider label="English" value={100} />
+          <Slider
+            label="English"
+            value={100}
+            shortDescription="Had to use it in most of my jobs."
+          />
         </Grid>
 
         <Grid size={6}>
-          <PercentageSlider label="Spanish" value={60} />
+          <Slider
+            label="Spanish"
+            value={60}
+            shortDescription="Learned mostly by traveling and speaking with friends from spanish speaking countries."
+          />
         </Grid>
 
         <Grid size={6}>
-          <PercentageSlider label="Italian" value={20} />
+          <Slider
+            label="Italian"
+            value={20}
+            shortDescription={
+              <Box>
+                Altough my dad is italian, I shamefully don&apos;t speak it
+                fluently. <br />
+                Must learn!
+              </Box>
+            }
+          />
         </Grid>
       </Grid>
     </Box>
@@ -206,19 +252,118 @@ function Skills() {
 
       <Grid container columnSpacing={2} rowSpacing={0}>
         <Grid size={6}>
-          <PercentageSlider label="Typescript/Javascript" value={80} />
+          <Slider
+            label="Python (Type Hints ❤️)"
+            value={70}
+            shortDescription={
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Typography variant="body2">
+                  Most Influential Resources
+                </Typography>
+
+                <Link
+                  href="https://www.youtube.com/playlist?list=PL4C4720A6F225E074"
+                  target="_blank"
+                >
+                  MIT 6.00 Intro to Computer Science & Programming, Fall 2008
+                </Link>
+
+                <Link
+                  href="https://www.youtube.com/playlist?list=PLUl4u3cNGP619EG1wp0kT-7rDE_Az5TNd"
+                  target="_blank"
+                >
+                  MIT 6.0002 Introduction to Computational Thinking and Data
+                  Science
+                </Link>
+              </Box>
+            }
+          />
         </Grid>
 
         <Grid size={6}>
-          <PercentageSlider label="Python (Type Hints ❤️)" value={70} />
+          <Slider
+            label="Typescript/Javascript"
+            value={80}
+            shortDescription={
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Typography variant="body1">
+                  Most Influential Resources
+                </Typography>
+
+                <Link
+                  href="https://frontendmasters.com/courses/archive/javascript-hard-parts-v2/"
+                  target="_blank"
+                >
+                  JavaScript: The Hard Parts
+                </Link>
+
+                <Link href="https://eloquentjavascript.net/" target="_blank">
+                  Eloquent Javascript
+                </Link>
+
+                <Link
+                  href="https://frontendmasters.com/courses/archive/getting-started-javascript-v2/"
+                  target="_blank"
+                >
+                  Getting Started with JavaScript
+                </Link>
+
+                <Link
+                  href="https://www.udemy.com/course/typescript-the-complete-developers-guide"
+                  target="_blank"
+                >
+                  Typescript: The Complete Developer&apos;s Guide
+                </Link>
+
+                <Link
+                  href="https://frontendmasters.com/courses/archive/typescript-v2/"
+                  target="_blank"
+                >
+                  TypeScript 3 Fundamentals
+                </Link>
+              </Box>
+            }
+          />
         </Grid>
 
         <Grid size={6}>
-          <PercentageSlider label="OrcaFlex/OrcFxAPI" value={60} />
+          <Slider label="OrcaFlex/OrcFxAPI" value={60} />
         </Grid>
 
         <Grid size={6}>
-          <PercentageSlider label="HTML/CSS" value={65} />
+          <Slider
+            label="HTML/CSS"
+            value={65}
+            shortDescription={
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Typography variant="body2">
+                  Most Influential Resources
+                </Typography>
+
+                <Link
+                  href="https://meyerweb.com/eric/books/css-tdg/"
+                  target="_blank"
+                >
+                  CSS: The Definitive Guide
+                </Link>
+              </Box>
+            }
+          />
         </Grid>
       </Grid>
     </Box>
@@ -232,35 +377,79 @@ function BonusSkills() {
 
       <Grid container columnSpacing={2} rowSpacing={0}>
         <Grid size={6}>
-          <PercentageSlider label="React/NextJS" value={80} />
+          <Slider
+            label="React/NextJS"
+            value={80}
+            shortDescription={
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Typography variant="body2">
+                  Most Influential Resources
+                </Typography>
+
+                <Link
+                  href="https://www.udemy.com/course/next-js-the-complete-developers-guide"
+                  target="_blank"
+                >
+                  Next JS: The Complete Developer&apos;s Guide
+                </Link>
+              </Box>
+            }
+          />
         </Grid>
 
         <Grid size={6}>
-          <PercentageSlider label="Plotly/Dash" value={50} />
+          <Slider
+            label="React Native/Expo"
+            value={70}
+            shortDescription={
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Typography variant="body2">
+                  Most Influential Resources
+                </Typography>
+
+                <Link
+                  href="https://www.udemy.com/course/the-complete-react-native-and-redux-course/learn/lecture/15706422?start=0#overview"
+                  target="_blank"
+                >
+                  The Complete React Native + Hooks Course
+                </Link>
+              </Box>
+            }
+          />
         </Grid>
 
         <Grid size={6}>
-          <PercentageSlider label="OrcFxAPI" value={90} />
+          <Slider label="Firebase" value={75} />
         </Grid>
 
         <Grid size={6}>
-          <PercentageSlider label="Version Control (Git/GitHub)" value={60} />
+          <Slider label="Plotly/Dash" value={50} />
         </Grid>
 
         <Grid size={6}>
-          <PercentageSlider label="Redux/Redux Toolkit" value={60} />
+          <Slider label="OrcFxAPI" value={90} />
         </Grid>
 
         <Grid size={6}>
-          <PercentageSlider label="Material UI" value={85} />
+          <Slider label="Version Control (Git/GitHub)" value={60} />
         </Grid>
 
         <Grid size={6}>
-          <PercentageSlider label="React Native/Expo" value={70} />
+          <Slider label="Redux/Redux Toolkit" value={60} />
         </Grid>
 
         <Grid size={6}>
-          <PercentageSlider label="Firebase" value={75} />
+          <Slider label="Material UI" value={85} />
         </Grid>
       </Grid>
     </Box>
@@ -270,7 +459,7 @@ function BonusSkills() {
 function Projects() {
   return (
     <Box>
-      <SectionTitle>Relevant Projects for the Job</SectionTitle>
+      <SectionTitle>Relevant Projects</SectionTitle>
 
       <Stack
         direction="row"
@@ -280,17 +469,27 @@ function Projects() {
         <IconLink
           href="https://leonardolombardi.vercel.app/"
           Icon={WebsiteIcon}
+          sx={{
+            lineHeight: 1.15,
+          }}
         >
-          leonardolombardi.vercel.app
-        </IconLink>
-
-        <IconLink
-          href="https://github.com/leonardolombardi07/leonardo-lombardi"
-          Icon={GitHubIcon}
-        >
-          Code (NextJS + Material UI)
+          My Website <br />
+          (leonardolombardi.vercel.app)
         </IconLink>
       </Stack>
+
+      <Box sx={{ mb: 1 }} />
+
+      <IconLink
+        href="https://futmacacos.vercel.app/"
+        Icon={SoccerIcon}
+        sx={{
+          lineHeight: 1.15,
+        }}
+      >
+        FutMacacos <br />
+        (NextJS + Firebase + Material UI app to manage soccer sessions)
+      </IconLink>
 
       <Box sx={{ mb: 1 }} />
 
@@ -308,62 +507,6 @@ function Projects() {
   );
 }
 
-function PercentageSlider({ label, value }: { label: string; value: number }) {
-  return (
-    <Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-          position: "relative",
-        }}
-      >
-        <Typography
-          variant="subtitle1"
-          sx={{
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-            maxWidth: "50%",
-          }}
-        >
-          {label}
-        </Typography>
-      </Box>
-
-      <Slider
-        min={0}
-        max={100}
-        value={value}
-        valueLabelDisplay="auto"
-        sx={{
-          pt: 1,
-          pb: 0.5,
-
-          width: "100%",
-          "& .MuiSlider-rail": {
-            color: "text.secondary",
-          },
-
-          pointerEvents: "none",
-
-          //   Disabled slider
-          "& .MuiSlider-thumb": {
-            display: "none",
-          },
-
-          //   Hide thumb for active and hover as well:
-          "& .MuiSlider-thumb.Mui-active, & .MuiSlider-thumb.Mui-focusVisible, & .MuiSlider-thumb:hover":
-            {
-              display: "none",
-            },
-        }}
-      />
-    </Box>
-  );
-}
-
 function JobExperienceSection() {
   return (
     <Box>
@@ -372,6 +515,7 @@ function JobExperienceSection() {
       <JobExperience
         position="Installation Analysis Engineer"
         company="Subsea7"
+        companyLink="https://www.subsea7.com"
         location="Rio de Janeiro"
         from="February 2024"
         to="Present"
@@ -394,6 +538,7 @@ function JobExperienceSection() {
       <JobExperience
         position="Software Engineer"
         company="RBNA Consult"
+        companyLink="https://rbnaconsult.com"
         location="Rio de Janeiro"
         from="March 2023"
         to="December 2023"
@@ -415,6 +560,7 @@ function JobExperienceSection() {
       <JobExperience
         position="Software Engineer"
         company="Fluxo Consultoria"
+        companyLink="https://fluxoconsultoria.poli.ufrj.br"
         location="Rio de Janeiro"
         from="December 2019"
         to="July 2021"
@@ -436,6 +582,7 @@ function JobExperienceSection() {
       <JobExperience
         position="Software Engineer"
         company="Hub Security"
+        companyLink="https://hub-technologies.com"
         location="Tel Aviv"
         from="January 2020"
         to="March 2020"
@@ -489,6 +636,7 @@ function BulletPointListItem({ children }: { children: React.ReactNode }) {
 function JobExperience({
   position,
   company,
+  companyLink,
   location,
   from,
   to,
@@ -497,6 +645,7 @@ function JobExperience({
 }: {
   position: string;
   company: string;
+  companyLink?: string;
   location: string;
   from?: string;
   to: string;
@@ -536,9 +685,17 @@ function JobExperience({
       >
         <Typography
           variant="body2"
+          component={companyLink ? "a" : "span"}
+          href={companyLink}
+          target="_blank"
           sx={{
             color: "secondary.main",
             fontWeight: "bold",
+            textDecoration: "none",
+
+            "&:hover": {
+              textDecoration: companyLink ? "underline" : "none",
+            },
           }}
         >
           {company}
@@ -570,7 +727,8 @@ function Education() {
 
       <EducationExperience
         degree="Bachelor, Naval and Oceanic Engineering"
-        place="Universidade Federal do Rio de Janeiro"
+        organization="Universidade Federal do Rio de Janeiro"
+        organizationLink="https://ufrj.br"
         location=""
         to="March 2025"
       >
@@ -586,7 +744,8 @@ function Education() {
 
       <EducationExperience
         degree="Exchange Program, Naval Engineering"
-        place="Instituto Superior Técnico"
+        organization="Instituto Superior Técnico"
+        organizationLink="https://tecnico.ulisboa.pt/"
         location="Lisbon"
         from="August 2021"
         to="August 2022"
@@ -606,7 +765,8 @@ function Education() {
 
 function EducationExperience({
   degree,
-  place,
+  organization,
+  organizationLink,
   location,
   from,
   to,
@@ -614,7 +774,8 @@ function EducationExperience({
   children,
 }: {
   degree: string;
-  place: string;
+  organization: string;
+  organizationLink?: string;
   location: string;
   from?: string;
   to: string;
@@ -654,12 +815,20 @@ function EducationExperience({
       >
         <Typography
           variant="body2"
+          component={organizationLink ? "a" : "span"}
+          href={organizationLink}
+          target="_blank"
           sx={{
             color: "secondary.main",
             fontWeight: "bold",
+            textDecoration: "none",
+
+            "&:hover": {
+              textDecoration: organizationLink ? "underline" : "none",
+            },
           }}
         >
-          {place}
+          {organization}
         </Typography>
 
         <Typography

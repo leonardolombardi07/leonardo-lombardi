@@ -19,15 +19,22 @@ function WithPreferredTheme({ children }: { children: React.ReactNode }) {
     const name = preferredTheme.name;
     const mode = preferredTheme.mode;
 
-    if (mode === "dark") {
-      return THEMES[name]["dark"];
+    try {
+      if (mode === "dark") {
+        return THEMES[name]["dark"];
+      } else {
+        return THEMES[name]["light"];
+      }
+    } catch (error: unknown) {
+      console.error(error);
+      return THEMES["main"]["light"];
     }
-    return THEMES[name]["light"];
   }, [preferredTheme.name, preferredTheme.mode]);
 
   return (
     <MUIThemeProvider theme={theme}>
       <CssBaseline />
+
       {children}
     </MUIThemeProvider>
   );

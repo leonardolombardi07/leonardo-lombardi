@@ -25,7 +25,7 @@ function PreferredThemeProvider({ children }: { children: React.ReactNode }) {
     (theme: PreferredTheme) => {
       _setTheme(theme);
     },
-    [_setTheme]
+    [_setTheme],
   );
 
   return (
@@ -44,7 +44,7 @@ function usePreferredTheme() {
   const PreferredTheme = React.useContext(PreferredThemeContext);
   if (PreferredTheme === null) {
     throw new Error(
-      "usePreferredTheme must be used within a PreferredThemeProvider"
+      "usePreferredTheme must be used within a PreferredThemeProvider",
     );
   }
   return PreferredTheme;
