@@ -8,7 +8,7 @@ import PreferredThemeProvider, {
   PreferredTheme,
 } from "./PreferredThemeProvider";
 import CssBaseline from "@mui/material/CssBaseline";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v16-appRouter";
 import ClientOnly from "@/components/ClientOnly";
 export { ROBOTO_FONT } from "./PreferredThemeProvider/themes";
 
