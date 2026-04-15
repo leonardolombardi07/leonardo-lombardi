@@ -22,7 +22,14 @@ export default function Page() {
       <Container
         maxWidth={"lg"}
         sx={{
-          paddingY: 4,
+          paddingY: {
+            xs: 0,
+            sm: 2,
+          },
+          paddingX: {
+            xs: 0,
+            sm: 4,
+          },
 
           "@media print": {
             paddingY: 0,
@@ -32,7 +39,10 @@ export default function Page() {
         <Box
           sx={{
             py: 4,
-            paddingX: 4,
+            paddingX: {
+              xs: 3,
+              sm: 4,
+            },
             bgcolor: "background.paper",
             border: "1px solid",
             borderColor: "divider",
@@ -117,16 +127,27 @@ function Header() {
         Leonardo Lombardi
       </Typography>
 
-      <Typography
-        variant="h5"
-        sx={{
-          color: "primary.main",
-          fontWeight: "bold",
-          mt: -0.5,
-        }}
+      <Stack
+        direction={"row"}
+        columnGap={2}
+        alignItems="center"
+        sx={{ mt: 0.5 }}
       >
-        Software Engineer
-      </Typography>
+        <Typography
+          variant="h5"
+          sx={{
+            color: "primary.main",
+            fontWeight: "bold",
+            // mt: -0.5,
+          }}
+        >
+          Software Engineer
+        </Typography>
+
+        <Typography variant="body2" sx={{ color: "text.secondary" }}>
+          Available to relocate · EU passport holder
+        </Typography>
+      </Stack>
 
       <Stack
         direction="row"
@@ -205,17 +226,17 @@ function Languages() {
       <Grid container columnSpacing={2} rowSpacing={0}>
         <Grid size={6}>
           <Slider
-            label="Portuguese"
+            label="English"
             value={100}
-            shortDescription="This is my native language. I'm from Brazil!"
+            shortDescription="Had to use it in most of my jobs."
           />
         </Grid>
 
         <Grid size={6}>
           <Slider
-            label="English"
+            label="Portuguese"
             value={100}
-            shortDescription="Had to use it in most of my jobs."
+            shortDescription="This is my native language. I'm from Brazil!"
           />
         </Grid>
 
@@ -251,40 +272,6 @@ function Skills() {
       <SectionTitle>Skills</SectionTitle>
 
       <Grid container columnSpacing={2} rowSpacing={0}>
-        <Grid size={6}>
-          <Slider
-            label="Python (Type Hints ❤️)"
-            value={70}
-            shortDescription={
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <Typography variant="body2">
-                  Most Influential Resources
-                </Typography>
-
-                <Link
-                  href="https://www.youtube.com/playlist?list=PL4C4720A6F225E074"
-                  target="_blank"
-                >
-                  MIT 6.00 Intro to Computer Science & Programming, Fall 2008
-                </Link>
-
-                <Link
-                  href="https://www.youtube.com/playlist?list=PLUl4u3cNGP619EG1wp0kT-7rDE_Az5TNd"
-                  target="_blank"
-                >
-                  MIT 6.0002 Introduction to Computational Thinking and Data
-                  Science
-                </Link>
-              </Box>
-            }
-          />
-        </Grid>
-
         <Grid size={6}>
           <Slider
             label="Typescript/Javascript"
@@ -337,7 +324,7 @@ function Skills() {
         </Grid>
 
         <Grid size={6}>
-          <Slider label="OrcaFlex/OrcFxAPI" value={60} />
+          <Slider label="React" value={75} />
         </Grid>
 
         <Grid size={6}>
@@ -365,21 +352,11 @@ function Skills() {
             }
           />
         </Grid>
-      </Grid>
-    </Box>
-  );
-}
 
-function BonusSkills() {
-  return (
-    <Box>
-      <SectionTitle>Bonus Skills</SectionTitle>
-
-      <Grid container columnSpacing={2} rowSpacing={0}>
         <Grid size={6}>
           <Slider
-            label="React/NextJS"
-            value={80}
+            label="NextJS"
+            value={70}
             shortDescription={
               <Box
                 sx={{
@@ -401,11 +378,55 @@ function BonusSkills() {
             }
           />
         </Grid>
+      </Grid>
+    </Box>
+  );
+}
+
+function BonusSkills() {
+  return (
+    <Box>
+      <SectionTitle>Bonus Skills</SectionTitle>
+
+      <Grid container columnSpacing={2} rowSpacing={0}>
+        <Grid size={6}>
+          <Slider
+            label="Python"
+            value={70}
+            shortDescription={
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Typography variant="body2">
+                  Most Influential Resources
+                </Typography>
+
+                <Link
+                  href="https://www.youtube.com/playlist?list=PL4C4720A6F225E074"
+                  target="_blank"
+                >
+                  MIT 6.00 Intro to Computer Science & Programming, Fall 2008
+                </Link>
+
+                <Link
+                  href="https://www.youtube.com/playlist?list=PLUl4u3cNGP619EG1wp0kT-7rDE_Az5TNd"
+                  target="_blank"
+                >
+                  MIT 6.0002 Introduction to Computational Thinking and Data
+                  Science
+                </Link>
+              </Box>
+            }
+          />
+        </Grid>
 
         <Grid size={6}>
           <Slider
             label="React Native/Expo"
-            value={70}
+            value={60}
             shortDescription={
               <Box
                 sx={{
@@ -433,15 +454,15 @@ function BonusSkills() {
         </Grid>
 
         <Grid size={6}>
-          <Slider label="Plotly/Dash" value={50} />
-        </Grid>
-
-        <Grid size={6}>
-          <Slider label="OrcFxAPI" value={90} />
-        </Grid>
-
-        <Grid size={6}>
           <Slider label="Version Control (Git/GitHub)" value={60} />
+        </Grid>
+
+        <Grid size={6}>
+          <Slider label="Express.js" value={45} />
+        </Grid>
+
+        <Grid size={6}>
+          <Slider label="Tailwind CSS" value={25} />
         </Grid>
 
         <Grid size={6}>
@@ -513,46 +534,22 @@ function JobExperienceSection() {
       <SectionTitle>Job Experience</SectionTitle>
 
       <JobExperience
-        position="Installation Analysis Engineer"
-        company="Subsea7"
-        companyLink="https://www.subsea7.com"
-        location="Rio de Janeiro"
-        from="February 2024"
-        to="Present"
-      >
-        <BulletPointListContainer>
-          <BulletPointListItem>
-            Performed subsea installation analyses using OrcaFlex to optimize
-            flexible pipe installation and riser design, ensuring safe and
-            efficient deepwater operations.
-          </BulletPointListItem>
-
-          <BulletPointListItem>
-            Leveraged Python (OrcFXAPI) to build automation and optimization
-            algorithms, including a genetic algorithm for Direct Vertical
-            Connection analysis.
-          </BulletPointListItem>
-        </BulletPointListContainer>
-      </JobExperience>
-
-      <JobExperience
         position="Software Engineer"
-        company="RBNA Consult"
-        companyLink="https://rbnaconsult.com"
-        location="Rio de Janeiro"
-        from="March 2023"
-        to="December 2023"
+        company="Hub Security"
+        companyLink="https://hub-technologies.com"
+        location="Tel Aviv"
+        from="January 2020"
+        to="March 2020"
       >
         <BulletPointListContainer>
           <BulletPointListItem>
-            Developed a fullstack certification dashboard to streamline client
-            interactions and reporting.
+            Automated lead-generation workflows (Python, Selenium) by building
+            scripts that extracted and processed business data from LinkedIn.
           </BulletPointListItem>
 
           <BulletPointListItem>
-            Introduced modern technologies (Next.js, TypeScript, Material UI,
-            Firebase, Auth0, AI APIs), enhancing usability, data security, and
-            client access to certification metrics.
+            Enabled the marketing team to expand client outreach and reduce
+            manual work.
           </BulletPointListItem>
         </BulletPointListContainer>
       </JobExperience>
@@ -581,22 +578,47 @@ function JobExperienceSection() {
 
       <JobExperience
         position="Software Engineer"
-        company="Hub Security"
-        companyLink="https://hub-technologies.com"
-        location="Tel Aviv"
-        from="January 2020"
-        to="March 2020"
+        company="RBNA Consult"
+        companyLink="https://rbnaconsult.com"
+        location="Rio de Janeiro"
+        from="March 2023"
+        to="December 2023"
+      >
+        <BulletPointListContainer>
+          <BulletPointListItem>
+            Built a fullstack B2B SaaS certification dashboard from scratch
+            using Next.js, TypeScript, and Material UI, streamlining client
+            interactions and reporting for certification workflows.
+          </BulletPointListItem>
+
+          <BulletPointListItem>
+            Integrated Firebase for real-time data, Auth0 for authentication,
+            and AI APIs for document processing, improving data security and
+            client access to certification metrics.
+          </BulletPointListItem>
+        </BulletPointListContainer>
+      </JobExperience>
+
+      <JobExperience
+        position="Installation Analysis Engineer"
+        company="Subsea7"
+        companyLink="https://www.subsea7.com"
+        location="Rio de Janeiro"
+        from="February 2024"
+        to="Present"
         divider={false}
       >
         <BulletPointListContainer>
           <BulletPointListItem>
-            Automated lead-generation workflows (Python, Selenium) by building
-            scripts that extracted and processed business data from LinkedIn.
+            Built Python automation tools and optimization algorithms
+            (OrcFXAPI), including a genetic algorithm that reduced manual
+            analysis time for deepwater installation workflows.
           </BulletPointListItem>
 
           <BulletPointListItem>
-            Enabled the marketing team to expand client outreach and reduce
-            manual work.
+            Developed Excel/VBA tooling and data processing pipelines for
+            engineering analysis, handling complex cross-referencing and report
+            generation.
           </BulletPointListItem>
         </BulletPointListContainer>
       </JobExperience>
@@ -753,9 +775,8 @@ function Education() {
       >
         <BulletPointListContainer>
           <BulletPointListItem>
-            First contact with optimization algorithms in naval engineering
-            through the Ship Design course, developing a model to minimize the
-            annual cost of a cruiser ship.
+            Continued frontend development alongside coursework - completed a UX
+            design course, building a prototype React Native app.
           </BulletPointListItem>
         </BulletPointListContainer>
       </EducationExperience>
